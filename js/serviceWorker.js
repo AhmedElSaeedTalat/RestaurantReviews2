@@ -58,6 +58,10 @@ class updates{
 	})
 }
 
+/**
+ * show buttons to query client response to update
+ */
+
  showUpdateButtons() {
 	let buttons = document.getElementById('updateWrapper');
 	buttons.classList.add('changDisplay');
@@ -100,9 +104,16 @@ var classInstance = new updates();
 
 classInstance.registerWorker();
 
+/**
+ * update response click events
+ */
+
 document.getElementById("update1").addEventListener("click", classInstance.accept);
 document.getElementById("update2").addEventListener("click", classInstance.reject);
 
+/**
+ * modal trap box logic for update buttons
+ */
 
 let button2 = document.getElementById('update2');
 	button2.onkeydown = function(key) {
@@ -115,6 +126,7 @@ let button2 = document.getElementById('update2');
 			buttons.classList.remove('changDisplay');
 		} 
 	} 
+	
 	let button1 = document.getElementById('update1');
 	button1.onkeydown = function(key) {
 		if(key.keyCode == '9') {

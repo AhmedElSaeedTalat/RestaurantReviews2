@@ -25,6 +25,10 @@ for(let i = 0 ; i <= 10 ; i++) {
 }
 cacheUrls = rest.concat(links);
 
+/**
+ * cache resources
+ */
+
 self.addEventListener('install', function(event){
 	event.waitUntil(
 		caches.open(cachedLinks).then(function(cache){
@@ -70,7 +74,9 @@ self.addEventListener('fetch', function(event) {
 		);
 });
 
-
+/**
+ * cache photos and serve 'em from network.
+ */
 
 function servePhoto(request) {
 	var storageUrl = request.url.replace(/.jpg$/, '');
@@ -85,6 +91,9 @@ function servePhoto(request) {
 	});
 }
 
+/**
+ * Skip waiting.
+ */
 
 self.addEventListener('message', function(event) {
 	if(event.data.action == 'skipWaiting') {
