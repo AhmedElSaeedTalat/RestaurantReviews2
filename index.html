@@ -2,24 +2,35 @@
 <html>
 
 <head>
+  <!-- Meta-definitions -->
+  <!-- <meta charset="utf-8"> -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <!-- Main CSS file -->
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   <link rel="stylesheet" href="css/styles.css">
-  <title>Restaurant Reviews</title>
+ 
+  <!-- Title -->
+  <title>Restaurant Reviews</title>  
 </head>
 
 <body>
+
+<section id="body">
+  
+  <a href="#filters" id="skip">skip to content</a>
   <header>
     <nav>
-      <h1><a href="/">Restaurant Reviews</a></h1>
+      <h1><a href="/" id="mainLink">Restaurant Reviews</a></h1>
     </nav>
   </header>
 
   <main id="maincontent">
     <section id="map-container">
-      <div id="map"></div>
+      <div id="map" aria-hidden='true' role='presentation'></div>
     </section>
     <section>
-      <div class="filter-options">
+      <div class="filter-options" id="filters">
         <h2>Filter Results</h2>
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
@@ -32,9 +43,24 @@
     </section>
   </main>
 
+</section> <!-- bodySection -->
+
+  <!-- update service workers -->
+  <div class="update" id="updateWrapper" role="dialog" aria-labelledby="modalId">
+    <span>there is an update for the App</span>
+    <i class="fas fa-times" onclick='closeBox()'></i>
+    <button class="followUpdates"  id="update1">Update</button>
+    <button class="followUpdates"  id="update2">Ignore</button>  
+  </div>
+  <span hidden id="modalId">Update The App</span>
+  
+
+
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&libraries=places&callback=initMap"></script>
+  <script src="js/serviceWorker.js"></script>
+  <script defer src="/fontawesome-free-5.0.8/fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpiO4VcL17SkYf-u8bHTlyXZ7_HQY9LUc&libraries=places&callback=initMap"></script>
 
 
   <footer id="footer">

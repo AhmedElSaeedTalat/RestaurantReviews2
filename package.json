@@ -1,0 +1,41 @@
+{
+  "name": "reponsive-images",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udacity/responsive-images.git"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-es2015": "^6.24.1",
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-mkdir": "~0.1.2",
+    "grunt-responsive-images": "^0.1.9",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^2.0.9"
+  },
+  "dependencies": {
+    "grunt-responsive-images": "^0.1.6"
+  },
+  "description": "---\r #### _Three Stage Course Material Project - Restaurant Reviews_",
+  "bugs": {
+    "url": "https://github.com/udacity/responsive-images/issues"
+  },
+  "homepage": "https://github.com/udacity/responsive-images#readme",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js",
+    "build": "webpack --watch",
+    "compile": "webpack",
+    "production": "set NODE_ENV=production&&webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
