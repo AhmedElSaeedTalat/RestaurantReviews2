@@ -1,4 +1,4 @@
-var cachedLinks ='cachesss';
+var cachedLinks ='cachess';
 var cacheImg ='images';
 var allCaches = [
 	cachedLinks,
