@@ -8,16 +8,10 @@ var allCaches = [
  var links = [
 				'/',
 				'css/styles.css',
-				'https://fonts.gstatic.com/s/sourcesanspro/v11/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2',
 				'js/dbhelper.js',
-				'js/restaurant_info.js',
-				'js/serviceWorker.js',
-				'https://fonts.googleapis.com/css?family=Source+Sans+Pro',
 				'js/main.js',
+				'js/restaurant_info.js',
 				'data/restaurants.json',
-				'sw.js',
-				'/fontawesome-free-5.0.8/fontawesome-free-5.0.8/svg-with-js/js/fontawesome-all.js'
-
 			];
 rest = [];
 for(let i = 0 ; i <= 10 ; i++) {
@@ -79,7 +73,7 @@ self.addEventListener('fetch', function(event) {
  */
 
 function servePhoto(request) {
-	var storageUrl = request.url.replace(/.jpg$/, '');
+	var storageUrl = request.url.replace(/-(.+)/, '');
 	return caches.open(cacheImg).then(function(cache){
 		return cache.match(storageUrl).then(function(response) {
 			if(response) return response;
