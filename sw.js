@@ -1,4 +1,4 @@
-var cachedLinks ='cachess';
+var cachedLinks ='cachee';
 var cacheImg ='images';
 var allCaches = [
 	cachedLinks,
@@ -7,6 +7,7 @@ var allCaches = [
 
  var links = [
 				'/',
+				'restaurant.html',
 				'css/styles.css',
 				'js/dbhelper.js',
 				'js/main.js',
@@ -14,7 +15,7 @@ var allCaches = [
 				'data/restaurants.json',
 			];
 rest = [];
-for(let i = 0 ; i <= 10 ; i++) {
+for(let i = 1 ; i <= 10 ; i++) {
 	rest.push(`/restaurant.html?id=${i}`);
 }
 cacheUrls = rest.concat(links);
