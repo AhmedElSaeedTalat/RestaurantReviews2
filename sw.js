@@ -11,7 +11,6 @@ var allCaches = [
 				'service/app.css',
 				'service/main.js',
 				'service/restaurant_info.js',
-				'data/restaurants.json',
 			];
 rest = [];
 for(let i = 1 ; i <= 10 ; i++) {

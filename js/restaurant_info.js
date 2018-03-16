@@ -75,8 +75,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   address.innerHTML = restaurant.address;
 
 const img = document.getElementById('restaurant-img');
-  img.srcset = `/images/${restaurant.small} 650w, /images/${restaurant.large} 800w`;
-  img.src = `/images/${restaurant.small}`;
+  img.srcset = `/images/${restaurant.photograph}-small.jpg 650w, /images/${restaurant.photograph}-large.jpg 800w`;
+  img.src = `/images/${restaurant.photograph}-small.jpg`;
   img.alt = restaurant.alt;
 
   const cuisine = document.getElementById('restaurant-cuisine');

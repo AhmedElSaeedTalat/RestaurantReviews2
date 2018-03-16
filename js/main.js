@@ -136,19 +136,19 @@ var counter = 0;
   const source = document.createElement('source');
   
   source.media = '(min-width:767px)';
-  source.srcset = `/images/${restaurant.large} 2x, 
-  /images/${restaurant.large} 1x`;
+  source.srcset = `/images/${restaurant.photograph}-large.jpg 2x, 
+  /images/${restaurant.photograph}-large.jpg 1x`;
 
   const source1 = document.createElement('source');
 
   source1.media = '(max-width:766px)';
-  source1.srcset = `/images/${restaurant.small} 2x, 
-  /images/${restaurant.small} 1x`;
+  source1.srcset = `/images/${restaurant.photograph}-small.jpg 2x, 
+  /images/${restaurant.photograph}-small.jpg 1x`;
 
   const image = document.createElement('img');
 
   image.className = 'restaurant-img';
-  image.src = `/images/${restaurant.large}`;
+  image.src = `/images/${restaurant.photograph}-small.jpg `;
   image.alt = restaurant.alt;
 
   picture.append(source);

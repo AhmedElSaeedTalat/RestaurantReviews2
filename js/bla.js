@@ -1,0 +1,1 @@
+fetch('http://localhost:1337/restaurants').then(res => res.json()).then(response => console.log(response));
