@@ -1,4 +1,4 @@
-var cachedLinks ='cachee';
+var cachedLinks ='cached';
 var cacheImg ='images';
 var allCaches = [
 	cachedLinks,
@@ -8,10 +8,9 @@ var allCaches = [
  var links = [
 				'/',
 				'restaurant.html',
-				'css/styles.css',
-				'js/dbhelper.js',
-				'js/main.js',
-				'js/restaurant_info.js',
+				'service/app.css',
+				'service/main.js',
+				'service/restaurant_info.js',
 				'data/restaurants.json',
 			];
 rest = [];
