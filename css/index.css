@@ -1,6 +1,137 @@
 @charset "utf-8";
 /* CSS Document */
 
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10pt;
+  color: #333;
+  line-height: 1.5;
+}
+
+body {
+  background-color: #fdfdfd;
+  margin: 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+    ul {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      color: #333;
+    }
+
+    a {
+      color: orange;
+      text-decoration: none;
+    }
+
+    h1,
+    h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0 0 20px;
+    }
+
+    footer,
+    header,
+    nav,
+    section {
+      display: block;
+    }
+
+    #footer {
+      background-color: #444;
+      color: #e4dede;
+      font-size: 8pt;
+      letter-spacing: 1px;
+      padding: 25px;
+      text-align: center;
+      text-transform: uppercase;
+      box-sizing: border-box;
+    }
+
+    nav {
+      width: 100%;
+      height: 80px;
+      background-color: #252831;
+      text-align: center;
+      display: flex !important;
+    }
+
+    nav h1 {
+      margin: auto;
+    }
+
+    nav h1 a {
+      color: #fff;
+      font-size: 14pt;
+      font-weight: 200;
+      letter-spacing: 10px;
+      text-transform: uppercase;
+    }
+
+    #maincontent {
+      background-color: #f3f3f3;
+      min-height: 100%;
+    }
+
+    .filter-options {
+      width: 100%;
+      display: flex;
+      height: 50px;
+      background-color:#065493;
+      align-items: center;
+    }
+
+    .filter-options h2 {
+      color: white;
+      font-size: 1rem;
+      font-weight: normal;
+      line-height: 1;
+      margin: 0 20px;
+    }
+
+    .filter-options select {
+      background-color: white;
+      border: 1px solid #fff;
+      font-family: Arial,sans-serif;
+      font-size: 11pt;
+      height: 35px;
+      letter-spacing: 0;
+      margin: 10px;
+      padding: 0 10px;
+      width: 40%;
+    }
+
+    .filtersWrapper {
+      display: flex;
+      height: 50px;
+      background-color: #065493;
+      align-items: center;
+    }
+
+    #restaurants-list {
+      background-color: #f3f3f3;
+      list-style: outside none none;
+      margin-top: 4rem;
+      padding: 30px 15px 60px;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+}
+
+
+  .filtersWrapper {
+    width: 1140px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+
+  .filter-options h2 {
+    margin: 0 0px;
+  }
+
 body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 10pt;
@@ -31,6 +162,16 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	display: block;
 }
 /* ====================== Map ====================== */
+#map {
+    height: 400px;
+    width: 100%;
+    background-color: #ccc;
+  }
+
+  #skip {
+    position: absolute;
+    top: -99%;
+  }
 #map div:focus {
   outline: 1px solid blue;
 }
@@ -129,6 +270,13 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
       border: 2px solid grey;
 }
 /* ====================== Media Queries ====================== */
+@media only screen and(min-width: 520px) {
+  @media screen and (min-width: 520px) {
+  .filter-options select {
+    width: 200px;
+  }
+}
+}
 @media  screen and (min-width: 767px)
 {
 #restaurants-list li {
@@ -156,6 +304,12 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
     display: block;
   }
 }
+@media only screen and(min-width: 1200px) {
+   #restaurants-list {
+    width: 1140px;
+    margin: 0 auto;
+  }
+}
 @media screen and (min-width: 1400px) {
  #restaurants-list li {
  margin-right: 15px;
@@ -168,3 +322,4 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
     margin-right: 0px !important;
   }
 }
+

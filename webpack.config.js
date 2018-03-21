@@ -13,7 +13,7 @@ module.exports = {
 		app:[   
             "./js/serviceWorker.js",
            
-            "./css/important.css",
+            "./css/index.css",
             // "./js/dbhelper.js",
             // "./js/main.js",
 
@@ -59,7 +59,7 @@ module.exports = {
   ],
 },
 plugins: [
-  new ExtractTextPlugin('important.css'),
+  new ExtractTextPlugin('index.css'),
   new webpack.LoaderOptionsPlugin({
     minimize:true
   }),

@@ -8,11 +8,11 @@ var allCaches = [
  var links = [
 				'/',
 				'restaurant.html',
-				'service/important.css',
 				'service/main.js',
 				'service/main.css',
 				'service/restaurant.css',
 				'service/rest.js',
+				'manifest.json',
 			];
 
 /**
