@@ -1,4 +1,3 @@
-require('./dbhelper.js');
 let restaurant;
 var map;
 

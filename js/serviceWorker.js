@@ -14,9 +14,9 @@ class updates{
  	if (!navigator.serviceWorker) return;
 
  	let index = this;
-	navigator.serviceWorker.register('/sw.js',{scope: './'})
+	navigator.serviceWorker.register('/sw.js')
 	.then(function(reg) {
-		
+		console.log(reg.scope);
 		if(!navigator.serviceWorker.controller) return;
 
 		if(reg.waiting) {
@@ -101,8 +101,9 @@ reject() {
 }
 
 var classInstance = new updates();
-
+window.classInstance = classInstance;
 classInstance.registerWorker();
+
 
 /**
  * update response click events
@@ -111,6 +112,10 @@ classInstance.registerWorker();
 document.getElementById("update1").addEventListener("click", classInstance.accept);
 document.getElementById("update2").addEventListener("click", classInstance.reject);
 
+function closeBox() {
+	let buttons = document.getElementById('updateWrapper');
+	buttons.classList.remove('changDisplay');
+}
 /**
  * modal trap box logic for update buttons
  */

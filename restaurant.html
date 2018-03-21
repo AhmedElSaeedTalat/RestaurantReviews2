@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <!-- Meta-definitions -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  
+  <meta name="theme-color" content="#252831"/>
+
   <!-- Normalize.css for better cross-browser consistency -->
   <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
   
   <!-- Main CSS file -->
-  <link rel="stylesheet" href="service/app.css">
+  <link  rel="stylesheet" href="service/main.css">
+  <link  rel="stylesheet" href="service/restaurant.css">
   <title>Restaurant Info</title>
+  <link rel="manifest" href="manifest1.json">
 </head>
 
 <body class="inside">
@@ -76,13 +79,8 @@
 
   </main>
   <!-- End main -->
-
-  
-
-  <!-- Beginning scripts -->
-
-  <!-- Main javascript file -->
-  <script  src="service/restaurant_info.js"></script>
+  <script  src="js/ser1.js" ></script>
+  <script  src="service/rest.js"></script>
   <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpiO4VcL17SkYf-u8bHTlyXZ7_HQY9LUc&libraries=places&callback=initMap"></script>
   <!-- End scripts -->

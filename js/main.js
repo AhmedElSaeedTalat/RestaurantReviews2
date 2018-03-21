@@ -1,5 +1,3 @@
-require('./serviceWorker.js');
-require('./dbhelper.js');
 let restaurants,
   neighborhoods,
   cuisines

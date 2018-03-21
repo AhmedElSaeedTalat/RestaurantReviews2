@@ -1,4 +1,4 @@
-var cachedLinks ='cached';
+var cachedLinks ='caches';
 var cacheImg ='images';
 var allCaches = [
 	cachedLinks,
@@ -8,15 +8,12 @@ var allCaches = [
  var links = [
 				'/',
 				'restaurant.html',
-				'service/app.css',
+				'service/important.css',
 				'service/main.js',
-				'service/restaurant_info.js',
+				'service/main.css',
+				'service/restaurant.css',
+				'service/rest.js',
 			];
-rest = [];
-for(let i = 1 ; i <= 10 ; i++) {
-	rest.push(`/restaurant.html?id=${i}`);
-}
-cacheUrls = rest.concat(links);
 
 /**
  * cache resources
@@ -25,7 +22,7 @@ cacheUrls = rest.concat(links);
 self.addEventListener('install', function(event){
 	event.waitUntil(
 		caches.open(cachedLinks).then(function(cache){
-			return cache.addAll(cacheUrls);		
+			return cache.addAll(links);		
 		})
 		
 		);
@@ -61,8 +58,12 @@ self.addEventListener('fetch', function(event) {
 		return;
 	}
 	event.respondWith(
-		caches.match(event.request).then(function(response){
-			return response || fetch(event.request);
+		caches.match(event.request, {'ignoreSearch': true} ).then(function(response){
+			  if (response) {
+		          return response;
+		        }
+		        return fetch(event.request);
+		      
 		})
 		);
 });

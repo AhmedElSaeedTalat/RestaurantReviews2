@@ -1,23 +1,38 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
   <!-- Meta-definitions -->
   <!-- <meta charset="utf-8"> -->
   <meta charset="utf-8">
+  <meta name="theme-color" content="#252831"/>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <!-- Normalize.css for better cross-browser consistency -->
-  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-  <!-- Main CSS file -->
-  <link rel="stylesheet" href="service/app.css">
+
+  <link  rel="stylesheet"  href="service/important.css">
+
+  <script>
+      window.DOMContentLoaded = loadStyleSheet('service/index.css','//normalize-css.googlecode.com/svn/trunk/normalize.css');
+      function loadStyleSheet(src,src2){
+            if (document.createStyleSheet) document.createStyleSheet(src);
+            else {
+                var stylesheet = document.createElement('link');
+                stylesheet.href = src;
+                stylesheet.rel = 'stylesheet';
+                stylesheet.type = 'text/css';
+                var stylesheet2 = document.createElement('link');
+                stylesheet2.href = src2;
+                stylesheet2.type = 'text/css';
+                document.getElementsByTagName('head')[0].appendChild(stylesheet);
+                document.getElementsByTagName('head')[0].appendChild(stylesheet2);
+            }
+        }
+  </script>
   <!-- Title -->
   <title>Restaurant Reviews</title>  
+   <!-- MapAPi javascript URL -->
+  <link rel="manifest" href="manifest.json">
 </head>
-
 <body>
-
 <section id="body">
-  
   <a href="#filters" id="skip">skip to content</a>
   <header>
     <nav>
@@ -33,10 +48,10 @@
       <div class="filter-options" id="filters">
         <div class="filtersWrapper">
           <h2>Filter Results</h2>
-          <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+          <select id="neighborhoods-select" aria-label='select neighborhoods' name="neighborhoods" onchange="updateRestaurants()">
             <option value="all">All Neighborhoods</option>
           </select>
-          <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()">
+          <select id="cuisines-select" aria-label='select cuisines' name="cuisines" onchange="updateRestaurants()">
             <option value="all">All Cuisines</option>
           </select>
         </div>
@@ -50,25 +65,16 @@
   <!-- update service workers -->
   <div class="update" id="updateWrapper" role="dialog" aria-labelledby="modalId">
     <span>there is an update for the App</span>
-    <i class="fas fa-times" onclick='closeBox()'></i>
+    <span class="fas fa-times" onclick='closeBox()'>&times;</span>
     <button class="followUpdates"  id="update1">Update</button>
     <button class="followUpdates"  id="update2">Ignore</button>  
   </div>
   <span hidden id="modalId">Update The App</span>
-  
-
-  <!-- Main javascript file -->
-  <script  src="service/main.js"></script>
-  <!-- fontIcons javascript file -->
-  <script defer src="js/fontawesome-all.js"></script>
-  <!-- MapAPi javascript URL -->
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpiO4VcL17SkYf-u8bHTlyXZ7_HQY9LUc&libraries=places&callback=initMap"></script>
-
-
   <footer id="footer">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
-
+  <script  src="service/serviceWorker.js" defer></script>
+  <script  src="service/main.js"  defer ></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpiO4VcL17SkYf-u8bHTlyXZ7_HQY9LUc&libraries=places&callback=initMap"></script>
 </body>
-
 </html>

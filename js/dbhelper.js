@@ -1,8 +1,13 @@
+import idb from 'idb';
 /**
  * Common database helper functions.
  */
 class DBHelper {
-
+  
+  constructor(){
+    let db;
+    let check;
+  }
   /**
    * Database URL.
    * Change this to restaurants.json file location on your server.
@@ -13,22 +18,58 @@ class DBHelper {
   }
 
   /**
+   * open DB to save Network response
+   */
+   static openDB() {
+    let db = idb.open('Restaurants',1,(upgrade) => {
+      var objectStore = upgrade.createObjectStore('restaurantObject',{keyPath:'photograph'});
+    });
+    this.db = db;
+   }
+   
+ /**
+   * Fetch all restaurants.
+  */
+static fetchResults() {
+   var init = {
+      method : "GET",
+    }    
+   fetch(DBHelper.DATABASE_URL,init).then(response => {
+            return response.json();
+          }).then(res => {
+            this.db.then(db => {
+              var tx = db.transaction('restaurantObject','readwrite');
+              var store = tx.objectStore('restaurantObject');
+              res.map(obj => {
+                return store.put(obj);
+              })     
+            });
+          }).catch(errors => {
+              const error = (`Request failed. Returned status of ${errors.status}`);
+              callback(error, null);
+          });
+}
+
+  /**
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
-    var init = {
-      method : "GET",
-    }
-    fetch(DBHelper.DATABASE_URL,init).then(response => {
-      return response.json();
-    }).then(res => {
-      const restaurants = res;
-      callback(null, restaurants);
-    }).catch(errors => {
-        const error = (`Request failed. Returned status of ${errors.status}`);
-        callback(error, null);
-    });
-  }
+   DBHelper.fetchResults();
+    this.db.then(db => {
+        var transaction = db.transaction('restaurantObject');
+        var storeObj = transaction.objectStore('restaurantObject');
+        return storeObj.getAll();
+    }).then(response => {
+      if(response) {
+        let restaurants = response;
+        callback(null, restaurants);
+    };       
+
+    
+  });
+
+}
+ 
 
   /**
    * Fetch a restaurant by its ID.
@@ -175,3 +216,4 @@ class DBHelper {
 
 }
 window.DBHelper = DBHelper;
+DBHelper.openDB();

@@ -15,13 +15,23 @@ module.exports = function(grunt) {
           sizes: [
 
            {
-              name: "small",
-              width: 650,
+              name: "192",
+              width: 192,
+              quality:30,
+            },
+             {
+              name: "256",
+              width: 256,
+              quality:30,
+            },
+             {
+              name: "384",
+              width: 384,
               quality:30,
             },
             {
-              name: "large",
-              width: 800,
+              name: "512",
+              width: 512,
               quality:30
             }
 
@@ -36,8 +46,8 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           src: ['*.{gif,jpg,png}'],
-          cwd: 'img/',
-          dest: 'images/'
+          cwd: 'logos/',
+          dest: 'mod_logos/'
         }]
       }
     },
@@ -45,7 +55,7 @@ module.exports = function(grunt) {
     /* Clear out the images directory if it exists */
     clean: {
       dev: {
-        src: ['images'],
+        src: ['mod_logos'],
       },
     },
 
@@ -53,7 +63,7 @@ module.exports = function(grunt) {
     mkdir: {
       dev: {
         options: {
-          create: ['images']
+          create: ['mod_logos']
         },
       },
     },
@@ -64,7 +74,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           src: 'images_src/fixed/*.{gif,jpg,png}',
-          dest: 'images/'
+          dest: 'mod_logos/'
         }]
       },
     },

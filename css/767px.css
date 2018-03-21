@@ -1,0 +1,19 @@
+ .update {
+    background: #1e1a1a;
+    width: 32%;
+    position: fixed;
+    top: 40%;
+    left: 35%;
+    padding: 10px;
+    display: none;
+  }
+
+  .update span {
+    display: block;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .fa-times {
+    display: block;
+  }
