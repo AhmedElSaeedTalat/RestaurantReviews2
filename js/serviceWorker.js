@@ -4,10 +4,13 @@ class updates{
 		let instance;
 	}
 
-/**
- * register service worker 
- */
 
+/**
+ * @description register service 
+ * worker 
+ * @call other function based on 
+ * workerState
+ */
 
  registerWorker() {
  	
@@ -34,7 +37,10 @@ class updates{
 }
 
 /**
- * notify the user that there is an update
+ * @description notify the user that there is an update
+ * @param {Object} serviceWorker object
+ * @call the function that show update 
+ * buttons
  */
 
  notifyUser(worker) {
@@ -43,13 +49,15 @@ class updates{
 }
 
 
-
 /**
- * check update state
+ * @description check update state
+ * @param {Object} serviceWorker object
+ * @call the function that show update 
+ * buttons
  */
 
  checkState(worker) {
- 	var thiss = this;
+ 	let thiss = this;
 	worker.addEventListener('statechange', function() {
 		if(worker.state == 'installed') {
 			thiss.showUpdateButtons();
@@ -59,7 +67,10 @@ class updates{
 }
 
 /**
- * show buttons to query client response to update
+ * @description show buttons to query client 
+ * response to update
+ * @Use Js Select Statement to show the 
+ * relative Elements
  */
 
  showUpdateButtons() {
@@ -72,7 +83,9 @@ class updates{
 }
 
 /**
- * close update box 
+ * @description close update box  
+ * @Use Js Select Statement to close the 
+ * relative Elements by removing class
  */
 
  closeBox() {
@@ -81,7 +94,9 @@ class updates{
 }
 
 /**
- * receive client response regarding the update
+ * @description skip waiting and take control
+ * @Events send Message Event
+ * @call the function that close the update 
  */
 
 accept() {
@@ -91,33 +106,46 @@ accept() {
 	location.reload();
 	classInstance.closeBox();
 }
+
+/**
+ * @description ignore update Request
+ * @call the function that close the update
+ * @Use selectStatment to remove attribute 
+ * hiding the body while modal is open 
+ */
+
+
 reject() {
 	classInstance.closeBox();
 	let body =  document.getElementById('body');
 	body.removeAttribute('aria-hidden');
-
+}
 }
 
-}
+/**
+ * @description instantiate class
+ * @call function to register ServiceWorker
+ */
 
-var classInstance = new updates();
+let classInstance = new updates();
 window.classInstance = classInstance;
 classInstance.registerWorker();
 
-
 /**
- * update response click events
+ * @description update response click events
+ * @Events listen to click events
+ * @call function to update or reject 
+ * serviceWorker update
  */
 
 document.getElementById("update1").addEventListener("click", classInstance.accept);
 document.getElementById("update2").addEventListener("click", classInstance.reject);
 
-function closeBox() {
-	let buttons = document.getElementById('update-Wrapper');
-	buttons.classList.remove('changDisplay');
-}
 /**
- * modal trap box logic for update buttons
+ * @description modal trap box logic 
+ * to update buttons
+ * @Events onKeyDown event used to control
+ * focus in the page
  */
 
 let button2 = document.getElementById('update2');
@@ -132,6 +160,13 @@ let button2 = document.getElementById('update2');
 		} 
 	} 
 	
+/**
+ * @description modal trap box logic 
+ * to the update buttons
+ * @Events onKeyDown event used to control
+ * focus in the page
+ */
+
 	let button1 = document.getElementById('update1');
 	button1.onkeydown = function(key) {
 		if(key.keyCode == '9') {

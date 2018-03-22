@@ -12,24 +12,24 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
 	entry:{
 		app:[   
-            "./js/serviceWorker.js",
+            // "./js/serviceWorker.js",
            
-            "./css/index.css",
+            // "./css/index.css",
             // "./js/dbhelper.js",
-            // "./js/main.js",
+            "./js/main.js",
 
               // "./index.html"
-            // "./js/dbhelper.js",
+            "./js/dbhelper.js",
             // "./js/restaurant_info.js",
 
         ]
 },
 	output:{
 		path:path.resolve(__dirname+"/service"),
-		// filename:"main.js"
+		filename:"main.js"
     // filename:"dbhelper.js"
     // filename:"restaurant_info.js",
-    filename:"serviceWorker.js"
+    // filename:"serviceWorker.js"
 },
  module: {
   rules: [

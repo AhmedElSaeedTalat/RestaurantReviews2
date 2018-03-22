@@ -1,19 +1,22 @@
 let restaurants,
   neighborhoods,
   cuisines
-var map
-var markers = []
+let map
+let markers = []
+
 /**
- * Fetch neighborhoods and cuisines as soon as the page is loaded.
+ * @description Fetch neighborhoods and 
+ * cuisines as soon as the page is loaded.
  */
+
 document.addEventListener('DOMContentLoaded', (event) => {
   fetchNeighborhoods();
   fetchCuisines();
 });
 
-
 /**
- * Initialize Google map, called from HTML.
+ * @description Initialize Google map, 
+ * called from HTML.
  */
 
 window.initMap = () => {
@@ -29,8 +32,10 @@ window.initMap = () => {
 }
 
 /**
- * Update page and map for current restaurants.
+ * @description Update page and map for
+ * current restaurants.
  */
+
 window.onload =  updateRestaurants = () => {
   const cSelect = document.getElementById('cuisines-select');
   const nSelect = document.getElementById('neighborhoods-select');
@@ -51,11 +56,11 @@ window.onload =  updateRestaurants = () => {
   });
 }
 
-// updateRestaurants();
-
 /**
- * Fetch all neighborhoods and set their HTML.
+ * @description Fetch all neighborhoods 
+ * and set their HTML.
  */
+
   fetchNeighborhoods = () => {
   DBHelper.fetchNeighborhoods((error, neighborhoods) => {
     if (error) { // Got an error
@@ -68,8 +73,10 @@ window.onload =  updateRestaurants = () => {
 }
 
 /**
- * Set neighborhoods HTML.
+ * @description Set neighborhoods HTML.
+ * @param {Object} neighborhoods
  */
+
   fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
   const select = document.getElementById('neighborhoods-select');
   neighborhoods.forEach(neighborhood => {
@@ -81,8 +88,10 @@ window.onload =  updateRestaurants = () => {
 }
 
 /**
- * Fetch all cuisines and set their HTML.
+ * @description Fetch all cuisines 
+ * and set their HTML.
  */
+
   fetchCuisines = () => {
   DBHelper.fetchCuisines((error, cuisines) => {
     if (error) { // Got an error!
@@ -95,8 +104,11 @@ window.onload =  updateRestaurants = () => {
 }
 
 /**
- * Set cuisines HTML.
+ * @description Set cuisines HTML. 
+ * and set their HTML.
+ * @param {Object} cuisines
  */
+
   fillCuisinesHTML = (cuisines = self.cuisines) => {
   const select = document.getElementById('cuisines-select');
 
@@ -108,11 +120,12 @@ window.onload =  updateRestaurants = () => {
   });
 }
 
-
-
 /**
- * Create all restaurants HTML and add them to the webpage.
+ * @description Create all restaurants 
+ * HTML and add them to the webpage
+ * @param {Object} restaurants
  */
+
   fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
   restaurants.forEach(restaurant => {
@@ -120,10 +133,13 @@ window.onload =  updateRestaurants = () => {
   });
   addMarkersToMap();
 }
-var counter = 0; 
+let counter = 0; 
+
 /**
- * Create restaurant HTML.
+ * @description create restaurant HTML.
+ * @param {Object} restaurant
  */
+
  createRestaurantHTML = (restaurant) => {
   counter++;
 
@@ -186,10 +202,12 @@ var counter = 0;
   return li
 }
 
-/**
- * Add markers for current restaurants to the map.
+ /**
+ * @description Add markers for current
+ * restaurants to the map.
+ * @param {Object} restaurants
  */
- 
+
   addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
@@ -202,24 +220,29 @@ var counter = 0;
 }
 
 /**
- * check if there is no results for items
+ * @description check if there 
+ * is no results for items 
+ * @Events mutation used to detect changes 
+ * On nodes and add Element to convey the message
  */
 
- var Items = document.getElementById('restaurants-list');
+ let Items = document.getElementById('restaurants-list');
 
- var mutations = new MutationObserver(function(mutations){
+ let mutations = new MutationObserver(function(mutations){
   mutations.forEach(function(mutation){
-    if(mutation.removedNodes.length > 0){
-      if(mutation.target.children.length == 0) {
-          const alert = document.createElement('span');
+    if(mutation.removedNodes.length > 0 && mutation.target.children.length == 0) {
+          let alert = document.createElement('span');
           alert.setAttribute('aria-live','assertive');
           alert.innerHTML = 'no Items';
           Items.append(alert);
-      }
     }
-    
   });
  });
+
+/**
+ * @description observe dom for
+ * changes
+ */
 
  mutations.observe(Items,{
    attributes: true,
@@ -231,10 +254,12 @@ var counter = 0;
     attributeNewValue: true,
   });
 
-
 /**
- * Clear current restaurants, their HTML and remove their map markers.
+ * @description Clear current restaurants,
+ * their HTML and remove their map markers.
+ * @param {Object} restaurants
  */
+ 
   resetRestaurants = (restaurants) => {
   // Remove all restaurants
   self.restaurants = [];

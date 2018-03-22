@@ -39,7 +39,8 @@ a {
 }
 
 
-a:hover, a:focus {
+a:hover,
+a:focus {
   color: #3397db;
   text-decoration: none;
 }

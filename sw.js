@@ -1,11 +1,21 @@
-var cachedLinks ='caches';
-var cacheImg ='images';
-var allCaches = [
+/**
+ * @description naming cache
+ * variables
+ */
+
+let cachedLinks ='caches';
+let cacheImg ='images';
+let allCaches = [
 	cachedLinks,
 	cacheImg,
 ];
 
- var links = [
+/**
+ * @description resources to be
+ * cached
+ */
+
+ let links = [
 				'/',
 				'restaurant.html',
 				'service/main.js',
@@ -16,7 +26,8 @@ var allCaches = [
 			];
 
 /**
- * cache resources
+ * @description cache resources
+ * Event
  */
 
 self.addEventListener('install', function(event){
@@ -24,13 +35,12 @@ self.addEventListener('install', function(event){
 		caches.open(cachedLinks).then(function(cache){
 			return cache.addAll(links);		
 		})
-		
 		);
-	
 });
 
 /**
- * delete unneeded cache when sw is activated.
+ * @description delete unneeded cache
+ * when sw is activated.
  */
 
 self.addEventListener('activate', function(event){
@@ -48,32 +58,30 @@ self.addEventListener('activate', function(event){
 });
 
 /**
- * delete unneeded cache when sw is activated.
+ * @description delete unneeded cache
+ * when sw is activated.
  */
 
 self.addEventListener('fetch', function(event) {
-	var url = new URL(event.request.url);
+	let url = new URL(event.request.url);
 	if(url.pathname.endsWith('.jpg')) {
 		event.respondWith(servePhoto(event.request));
 		return;
 	}
 	event.respondWith(
 		caches.match(event.request, {'ignoreSearch': true} ).then(function(response){
-			  if (response) {
-		          return response;
-		        }
-		        return fetch(event.request);
-		      
+	        return response ? response : fetch(event.request);
 		})
 		);
 });
 
 /**
- * cache photos and serve 'em from network.
+ * @description cache photos and serve 
+ * 'em from network.
  */
 
 function servePhoto(request) {
-	var storageUrl = request.url.replace(/-(.+)/, '');
+	let storageUrl = request.url.replace(/-(.+)/, '');
 	return caches.open(cacheImg).then(function(cache){
 		return cache.match(storageUrl).then(function(response) {
 			if(response) return response;
@@ -86,11 +94,11 @@ function servePhoto(request) {
 }
 
 /**
- * Skip waiting.
+ * @description Skip waiting.
  */
 
 self.addEventListener('message', function(event) {
 	if(event.data.action == 'skipWaiting') {
 		self.skipWaiting();
 	}
-})
+});

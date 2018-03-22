@@ -1,45 +1,55 @@
 import idb from 'idb';
+
 /**
- * Common database helper functions.
+ * @description Common database 
+ * helper functions.
  */
+
 class DBHelper {
   
   constructor(){
     let db;
     let check;
   }
+
   /**
-   * Database URL.
-   * Change this to restaurants.json file location on your server.
+   * @description Database URL.
+   * Change this to restaurants.json 
+   * file location on your server.
    */
+
   static get DATABASE_URL() {
     const port = 1337 // Change this to your server port
     return `http://localhost:${port}/restaurants`;
   }
 
   /**
-   * open DB to save Network response
+   * @description open DB to 
+   * save Network response
    */
+
    static openDB() {
     let db = idb.open('Restaurants',1,(upgrade) => {
-      var objectStore = upgrade.createObjectStore('restaurantObject',{keyPath:'photograph'});
+      let objectStore = upgrade.createObjectStore('restaurantObject',{keyPath:'photograph'});
     });
     this.db = db;
    }
-   
- /**
-   * Fetch all restaurants.
-  */
+
+  /**
+   * @description Fetch all 
+   * restaurants.
+   */
+
 static fetchResults() {
-   var init = {
+   let init = {
       method : "GET",
     }    
    fetch(DBHelper.DATABASE_URL,init).then(response => {
             return response.json();
           }).then(res => {
             this.db.then(db => {
-              var tx = db.transaction('restaurantObject','readwrite');
-              var store = tx.objectStore('restaurantObject');
+              let tx = db.transaction('restaurantObject','readwrite');
+              let store = tx.objectStore('restaurantObject');
               res.map(obj => {
                 return store.put(obj);
               })     
@@ -51,29 +61,31 @@ static fetchResults() {
 }
 
   /**
-   * Fetch all restaurants.
+   * @description Fetch all restaurants.
+   * @param {Object} call back
    */
+
   static fetchRestaurants(callback) {
    DBHelper.fetchResults();
     this.db.then(db => {
-        var transaction = db.transaction('restaurantObject');
-        var storeObj = transaction.objectStore('restaurantObject');
+        let transaction = db.transaction('restaurantObject');
+        let storeObj = transaction.objectStore('restaurantObject');
         return storeObj.getAll();
     }).then(response => {
       if(response) {
         let restaurants = response;
         callback(null, restaurants);
     };       
-
-    
   });
-
 }
  
-
   /**
-   * Fetch a restaurant by its ID.
+   * @description Fetch a restaurant by
+   * its ID.
+   * @param {Object} id,
+   * @param {Object} callback
    */
+  
   static fetchRestaurantById(id, callback) {
     // fetch all restaurants with proper error handling.
     DBHelper.fetchRestaurants((error, restaurants) => {
@@ -91,8 +103,12 @@ static fetchResults() {
   }
 
   /**
-   * Fetch restaurants by a cuisine type with proper error handling.
+   * @description  Fetch restaurants by a cuisine
+   * type with proper error handling.
+   * @param {Object} cuisine,
+   * @param {Object} callback
    */
+
   static fetchRestaurantByCuisine(cuisine, callback) {
     // Fetch all restaurants  with proper error handling
     DBHelper.fetchRestaurants((error, restaurants) => {
@@ -105,10 +121,14 @@ static fetchResults() {
       }
     });
   }
-
+ 
   /**
-   * Fetch restaurants by a neighborhood with proper error handling.
+   * @description Fetch restaurants by a neighborhood
+   * with proper error handling.
+   * @param {Object} neighborhood,
+   * @param {Object} callback
    */
+
   static fetchRestaurantByNeighborhood(neighborhood, callback) {
     // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
@@ -121,10 +141,15 @@ static fetchResults() {
       }
     });
   }
-
+  
   /**
-   * Fetch restaurants by a cuisine and a neighborhood with proper error handling.
+   * @description Fetch restaurants by a cuisine
+   * and a neighborhood with proper error handling.
+   * @param {Object} cuisine,
+   * @param {Object} neighborhood,
+   * @param {Object} callback
    */
+
   static fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, callback) {
     // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
@@ -144,8 +169,11 @@ static fetchResults() {
   }
 
   /**
-   * Fetch all neighborhoods with proper error handling.
+   * @description Fetch all neighborhoods with 
+   * proper error handling.
+   * @param {Object} callback
    */
+
   static fetchNeighborhoods(callback) {
     // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
@@ -161,9 +189,12 @@ static fetchResults() {
     });
   }
 
-  /**
-   * Fetch all cuisines with proper error handling.
+ /**
+   * @description Fetch all cuisines with
+   * proper error handling.
+   * @param {Object} callback
    */
+
   static fetchCuisines(callback) {
     // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
@@ -180,29 +211,38 @@ static fetchResults() {
   }
 
   /**
-   * Restaurant page URL.
+   * @description FRestaurant page URL.
+   * @param {Object} restaurant
    */
+
   static urlForRestaurant(restaurant) {
     return (`./restaurant.html?id=${restaurant.id}`);
   }
 
   /**
-   * Restaurant image URL.
+   * @description Restaurant image URL.
+   * @param {Object} restaurant
    */
-  static imageUrlForRestaurant(restaurant) {
-    return (`/img/${restaurant.photograph}`);
-  }
 
-/**
-   * Restaurant image URL.
-   */
-  static imageUrlForRestaurantLarge(restaurant) {
-    return (`/images/${restaurant.photoLarge}`);
+  static imageUrlForRestaurant(restaurant) {
+    return (`/images/${restaurant.photograph}`);
   }
 
   /**
-   * Map marker for a restaurant.
+   * @description Restaurant image URL.
+   * @param {Object} restaurant
    */
+  
+  static imageUrlForRestaurantLarge(restaurant) {
+    return (`/images/${restaurant.photograph}`);
+  }
+  
+  /**
+   * @description Map marker for a restaurant.
+   * @param {Object} restaurant
+   * @param {Object} map
+   */
+
   static mapMarkerForRestaurant(restaurant, map) {
     const marker = new google.maps.Marker({
       position: restaurant.latlng,
