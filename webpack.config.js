@@ -7,6 +7,7 @@ var ImageminPlugin = require('imagemin-webpack-plugin').default
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const imageminMozjpeg =require('imagemin-mozjpeg');
 var CriticalWebpackPlugin = require('critical-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry:{
@@ -28,7 +29,7 @@ module.exports = {
 		// filename:"main.js"
     // filename:"dbhelper.js"
     // filename:"restaurant_info.js",
-    filename:"restasdas.js"
+    filename:"serviceWorker.js"
 },
  module: {
   rules: [
@@ -59,6 +60,10 @@ module.exports = {
   ],
 },
 plugins: [
+new HtmlWebpackPlugin({
+src: 'x.html',
+template:'index.html'
+}),
   new ExtractTextPlugin('index.css'),
   new webpack.LoaderOptionsPlugin({
     minimize:true

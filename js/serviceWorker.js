@@ -113,7 +113,7 @@ document.getElementById("update1").addEventListener("click", classInstance.accep
 document.getElementById("update2").addEventListener("click", classInstance.reject);
 
 function closeBox() {
-	let buttons = document.getElementById('updateWrapper');
+	let buttons = document.getElementById('update-Wrapper');
 	buttons.classList.remove('changDisplay');
 }
 /**
@@ -127,7 +127,7 @@ let button2 = document.getElementById('update2');
 			document.getElementById('update1').focus();
 		}
 		if(key.keyCode == '27') {
-			let buttons = document.getElementById('updateWrapper');
+			let buttons = document.getElementById('update-Wrapper');
 			buttons.classList.remove('changDisplay');
 		} 
 	} 
@@ -139,7 +139,7 @@ let button2 = document.getElementById('update2');
 			document.getElementById('update2').focus();
 		}
 		if(key.keyCode == '27') {
-			let buttons = document.getElementById('updateWrapper');
+			let buttons = document.getElementById('update-Wrapper');
 			buttons.classList.remove('changDisplay');
 		} 
 	} 

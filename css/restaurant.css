@@ -1,90 +1,116 @@
-.brdCrumb {
+/* ====================== Breadcrumb ====================== */
+.breadcrumb-wrapper {
   text-align: inherit;
   height: auto;
 }
+
+
 .breadcrumb {
-    padding: 10px 40px 16px;
-    list-style: none;
-    background-color: #eee;
-    font-size: 17px;
-    margin: 0;
+  padding: 10px 40px 16px;
+  list-style: none;
+  background-color: #eee;
+  font-size: 17px;
+  margin: 0;
 }
+
+
 /* Display list items side by side */
 .breadcrumb li {
-    display: inline;
+  display: inline;
 }
+
 
 /* Add a slash symbol (/) before/behind each list item */
 .breadcrumb li+li:before {
-    padding: 8px;
-    color: black;
-    content: "/\00a0";
+  padding: 8px;
+  color: black;
+  content: "/\00a0";
 }
+
 
 /* Add a color to all links inside the list */
 .breadcrumb li a {
-    color: #024988;
-    text-decoration: none;
+  color: #024988;
+  text-decoration: none;
 }
+
 
 /* Add a color on mouse-over */
 .breadcrumb li a:hover {
-    color: #01447e;
-    text-decoration: underline;
+  color: #01447e;
+  text-decoration: underline;
 }
-/* ====================== Restaurant Details ====================== */
+
+
+ header .breadcrumb-wrapper {
+  display: none;
+}
+
+
+ main .breadcrumb-wrapper {
+  display: block;
+}
+
+
+/* ====================== Header and Map ====================== */
 .inside header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
 }
+
+
 .inside #map-container {
   background: blue none repeat scroll 0 0;
   height: 80vh;
   position: relative; 
 }
+
+
 .inside #map {
   background-color: #ccc;
   height: 100%;
   width: 100%;
 }
-.inside #footer {
-  bottom: 0;
-  position: relative;
-  max-width: 100%;
-}
+
+
+/* ====================== Restaurant Details ====================== */
 #restaurant-name {
   color: #f18200;
-  font-family: Arial,sans-serif;
-  font-size: 20pt;
-  font-weight: 200;
+  font: 200 20pt/1.1 Arial,sans-serif;
   letter-spacing: 0;
   margin: 15px 0 30px;
   text-transform: uppercase;
-  line-height: 1.1;
   padding: 0 15px;
   text-align: center;
 }
+
+
 .img {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
+
+
 #restaurant-img {
 	width: 90%;
 }
+
+
 #restaurant-address {
   font-size: 12pt;
   margin: 10px 0px;
   width: 100%;
   text-align: center;
 }
+
+
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
-  font-size: 12pt;
-  font-weight: 300;
+  font: 300 12pt Arial,sans-serif;
   letter-spacing: 10px;
   margin: 0 0 20px;
   padding: 2px 0;
@@ -92,15 +118,9 @@
   text-transform: uppercase;
 	width: 90%;
 }
-#restaurant-container, #reviews-container {
-  padding: 9px 0px;
-}
-#reviews-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-.body{
+
+
+.restaurant-details-wrapper {
   padding: 0 15px;
   width: 75%;
   display: flex;
@@ -108,119 +128,173 @@
   margin: 0 auto;
   justify-content: center;
 }
+
+
+#restaurant-hours tr {
+  border-bottom: 1px solid #e7e3e3;
+}
+
+
+#restaurant-hours td {
+  color: #666;
+  line-height: 28px;
+}
+
+
+/* ====================== Restaurant Reviews ====================== */
+#restaurant-container, #reviews-container {
+  padding: 9px 0px;
+}
+
+
+#reviews-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
 #reviews-container {
   padding: 13px 0px;
 }
+
+
 #reviews-container h2 {
   color: #f58500;
-  font-size: 24pt;
-  font-weight: 300;
+  font: 300 24pt Arial,sans-serif;
   letter-spacing: -1px;
   padding-bottom: 1pt;
 }
+
+
 #reviews-list {
   margin: 0;
   padding: 0;
 }
+
+
 #reviews-list li {
   background-color: #fff;
   border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
-  margin: 0px auto;
-  margin-bottom: 30px;
+  margin: 0 auto 30px auto;
   overflow: hidden;
   padding: 20px 20px 20px;
   position: relative;
   width: 90%;
   box-sizing: border-box;
 }
+
+
 #reviews-list li:nth-child(3){
-    margin: 0px auto;
-    margin-bottom: 30px
+  margin: 0 auto 30px auto;
 }
+
+
 #reviews-list li p {
   margin: 0 0 10px;
 }
-#restaurant-hours tr
-{
-    border-bottom: 1px solid #e7e3e3;
+
+
+.inside #footer {
+  bottom: 0;
+  position: relative;
+  max-width: 100%;
 }
-#restaurant-hours td {
-  color: #666;
-  line-height: 28px;
-}
- header .brdCrumb {
-  display: none;
-}
- main .brdCrumb {
-  display: block;
-}
+
+
 /* ====================== Media Queries ====================== */
-@media  screen and (min-width: 767px)
-{
- header .brdCrumb {
-  display: block;
+@media  screen and (min-width: 767px) {
+  header .breadcrumb-wrapper {
+    display: block;
 }
-main .brdCrumb {
-  display: none;
+
+
+  main .breadcrumb-wrapper {
+    display: none;
 }
-.inside #map-container{
+
+
+  .inside #map-container {
     position: fixed;
     right: 0;
     height: 100%;
     width: 50%;
-  }
-  #restaurant-container, #reviews-container{
+ }
+
+
+  #restaurant-container, #reviews-container {
     width: 50%;
   }
-  #restaurant-container{
-    margin-top: 8rem;
+
+
+  #restaurant-container {
+    margin-top: 4rem;
   }
-   .inside #footer {
+
+
+  .inside #footer {
     width: 95.3%;;
-}
-.body {
+  }
+  .restaurant-details-wrapper {
     display: block;
     width: 90%;
     margin: 0 auto;
-}
- .footerWrapper {
-    width : 50%;
   }
+
+
+ .footerWrapper {
+    width: 50%;
+  }
+
+
   #restaurant-address {
     width: auto;
     text-align: left;
   }
 }
+
+
 @media screen and (min-width: 1400px) {
- #restaurant-container, #reviews-container { 
+  #restaurant-container, #reviews-container { 
     max-width: 1140px;
   }
 }
+
+
 @media screen and (min-width: 2201px) {
-.inside #map-container {
+  .inside #map-container {
     position: relative;
     height: 500px;
-    margin-top: 130px;
     width: 100%;
-    margin-bottom: 43px;
+    margin: 130px auto 43px auto;
 }
+
+
  #restaurant-container, #reviews-container { 
     max-width: 1140px;
-    margin:0 auto;
+    margin: 0 auto;
   }
+
+
   .footerWrapper {
     width: 100%;
   }
+
+
   .inside #footer {
      width: 100%;
   }
+
+
   .breadcrumb {
     max-width: 1140px;
     margin: 0 auto;
   }
-  .brdCrumb {
+
+
+  .breadcrumb-wrapper {
     background: #eee;
   }
 }

@@ -13,7 +13,10 @@
   <!-- Main CSS file -->
   <link  rel="stylesheet" href="service/main.css">
   <link  rel="stylesheet" href="service/restaurant.css">
+
+  <!-- Title -->
   <title>Restaurant Info</title>
+  <!-- Manifest -->
   <link rel="manifest" href="manifest1.json">
 </head>
 
@@ -25,7 +28,7 @@
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <nav  aria-label="Breadcrumb" class="brdCrumb">
+    <nav  aria-label="Breadcrumb" class="breadcrumb-wrapper">
       <ul class="breadcrumb" >
         <li><a href="/">Home</a></li>
       </ul>
@@ -45,7 +48,7 @@
     <!-- End map -->
 
     <!-- Beginning restaurant -->
-     <nav  aria-label="Breadcrumb" class="brdCrumb">
+     <nav  aria-label="Breadcrumb" class="breadcrumb-wrapper">
       <ul class="breadcrumb" >
         <li><a href="/">Home</a></li>
       </ul>
@@ -57,7 +60,7 @@
           <img  id="restaurant-img" />
          <p id="restaurant-cuisine"></p>
       </div>
-      <div class="body">
+      <div class="restaurant-details-wrapper">
         <p id="restaurant-address"></p>
         <table id="restaurant-hours"></table>
       </div>
@@ -79,7 +82,11 @@
 
   </main>
   <!-- End main -->
+  
+  <!-- JS -->
+  <!-- JS ServiceWorkers -->
   <script  src="js/ser1.js" ></script>
+  <!-- All Content Sripts -->
   <script  src="service/rest.js"></script>
   <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpiO4VcL17SkYf-u8bHTlyXZ7_HQY9LUc&libraries=places&callback=initMap"></script>

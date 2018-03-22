@@ -1,77 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <!-- Meta-definitions -->
-  <!-- <meta charset="utf-8"> -->
   <meta charset="utf-8">
   <meta name="theme-color" content="#252831"/>
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <!-- styles added after load -->
   <script>
       window.DOMContentLoaded = loadStyleSheet('service/index.css','//normalize-css.googlecode.com/svn/trunk/normalize.css');
       function loadStyleSheet(src,src2){
             if (document.createStyleSheet) document.createStyleSheet(src);
             else {
-                var stylesheet = document.createElement('link');
+                var stylesheet = document.createElement("link");
                 stylesheet.href = src;
-                stylesheet.rel = 'stylesheet';
-                stylesheet.type = 'text/css';
-                var stylesheet2 = document.createElement('link');
+                stylesheet.rel = "stylesheet";
+                var stylesheet2 = document.createElement("link");
+                stylesheet2.rel = "stylesheet";
                 stylesheet2.href = src2;
-                stylesheet2.type = 'text/css';
-                document.getElementsByTagName('head')[0].appendChild(stylesheet);
-                document.getElementsByTagName('head')[0].appendChild(stylesheet2);
+                document.getElementsByTagName("head")[0].appendChild(stylesheet);
+                document.getElementsByTagName("head")[0].appendChild(stylesheet2);
             }
         }
   </script>
   <!-- Title -->
   <title>Restaurant Reviews</title>  
-   <!-- MapAPi javascript URL -->
+   <!-- Manifest -->
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
-<section id="body">
-  <a href="#filters" id="skip">skip to content</a>
-  <header>
-    <nav>
-      <h1><a href="/" id="mainLink">Restaurant Reviews</a></h1>
-    </nav>
-  </header>
+  <section id="body">
+    <a href="#filters" id="skip">skip to content</a>
+    <header>
+      <nav>
+        <h1><a href="/" id="mainLink">Restaurant Reviews</a></h1>
+      </nav>
+    </header>
+    <!-- main Content -->
+    <main id="main-content">
+      <!-- Beginning map -->
+      <section id="map-container">
+        <div id="map"  aria-label="map with restaurants" role="application"></div>
+      </section><!-- end-map -->
 
-  <main id="maincontent">
-    <section id="map-container">
-      <div id="map"  aria-label="map with restaurants" role='application'></div>
-    </section>
-    <section>
-      <div class="filter-options" id="filters">
-        <div class="filtersWrapper">
-          <h2>Filter Results</h2>
-          <select id="neighborhoods-select" aria-label='select neighborhoods' name="neighborhoods" onchange="updateRestaurants()">
-            <option value="all">All Neighborhoods</option>
-          </select>
-          <select id="cuisines-select" aria-label='select cuisines' name="cuisines" onchange="updateRestaurants()">
-            <option value="all">All Cuisines</option>
-          </select>
+      <section>
+        <!-- filter resturant results -->
+        <div class="filter-options" id="filters">
+          <div class="filters-Wrapper">
+            <h2>Filter Results</h2>
+            <select id="neighborhoods-select" aria-label="select neighborhoods" name="neighborhoods" onchange="updateRestaurants()">
+              <option value="all">All Neighborhoods</option>
+            </select>
+            <select id="cuisines-select" aria-label="select cuisines" name="cuisines" onchange="updateRestaurants()">
+              <option value="all">All Cuisines</option>
+            </select>
+          </div>
         </div>
-      </div>
-      <ul id="restaurants-list"></ul>
-    </section>
-  </main>
-
-</section> <!-- bodySection -->
+        <ul id="restaurants-list"></ul>
+      </section>
+    </main><!-- end-mainContent -->
+  </section> <!-- bodySection -->
 
   <!-- update service workers -->
-  <div class="update" id="updateWrapper" role="dialog" aria-labelledby="modalId">
+  <div class="update" id="update-Wrapper" role="dialog" aria-labelledby="modalId">
     <span>there is an update for the App</span>
-    <span class="fas fa-times" onclick='closeBox()'>&times;</span>
-    <button class="followUpdates"  id="update1">Update</button>
-    <button class="followUpdates"  id="update2">Ignore</button>  
-  </div>
+    <span class="fas fa-times" onclick="closeBox()">x</span>
+    <button class="update-Action"  id="update1">Update</button>
+    <button class="update-Action"  id="update2">Ignore</button>  
+  </div><!-- end-div -->
   <span hidden id="modalId">Update The App</span>
+
+  <!-- footer -->
   <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
-  </footer>
+  Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer> <!-- end-footer -->
+
+  <!-- JS -->
+  <!-- JS ServiceWorkers -->
   <script  src="service/serviceWorker.js" defer></script>
-  <script  src="service/main.js"  defer ></script>
+  <!-- all JS scripts -->
+  <script  src="service/main.js" defer></script>
+  <!-- MapAPi javascript URL -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCpiO4VcL17SkYf-u8bHTlyXZ7_HQY9LUc&libraries=places&callback=initMap"></script>
 </body>
+
 </html>
