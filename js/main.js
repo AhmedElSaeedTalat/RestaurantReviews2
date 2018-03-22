@@ -202,7 +202,7 @@ let counter = 0;
   return li
 }
 
- /**
+/**
  * @description Add markers for current
  * restaurants to the map.
  * @param {Object} restaurants

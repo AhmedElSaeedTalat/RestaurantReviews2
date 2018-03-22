@@ -30,9 +30,9 @@ let allCaches = [
  * Event
  */
 
-self.addEventListener('install', function(event){
+self.addEventListener('install', function(event) {
 	event.waitUntil(
-		caches.open(cachedLinks).then(function(cache){
+		caches.open(cachedLinks).then(function(cache) {
 			return cache.addAll(links);		
 		})
 		);
@@ -43,11 +43,11 @@ self.addEventListener('install', function(event){
  * when sw is activated.
  */
 
-self.addEventListener('activate', function(event){
+self.addEventListener('activate', function(event) {
 	event.waitUntil(
-		caches.keys().then(function(key){
+		caches.keys().then(function(key) {
 			return Promise.all(
-				key.filter(function(item){
+				key.filter(function(item) {
 							return !allCaches.includes(item);				
 						}).map(function(deletes){
 							return caches.delete(deletes)
@@ -69,7 +69,7 @@ self.addEventListener('fetch', function(event) {
 		return;
 	}
 	event.respondWith(
-		caches.match(event.request, {'ignoreSearch': true} ).then(function(response){
+		caches.match(event.request, {'ignoreSearch': true} ).then(function(response) {
 	        return response ? response : fetch(event.request);
 		})
 		);
