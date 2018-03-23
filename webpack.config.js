@@ -6,30 +6,17 @@ var Compression = require('compression-webpack-plugin');
 var ImageminPlugin = require('imagemin-webpack-plugin').default
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const imageminMozjpeg =require('imagemin-mozjpeg');
-var CriticalWebpackPlugin = require('critical-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry:{
 		app:[   
-            // "./js/serviceWorker.js",
-           
-            // "./css/index.css",
-            // "./js/dbhelper.js",
             "./js/main.js",
-
-              // "./index.html"
             "./js/dbhelper.js",
-            // "./js/restaurant_info.js",
-
         ]
 },
 	output:{
 		path:path.resolve(__dirname+"/service"),
 		filename:"main.js"
-    // filename:"dbhelper.js"
-    // filename:"restaurant_info.js",
-    // filename:"serviceWorker.js"
 },
  module: {
   rules: [
@@ -43,27 +30,10 @@ module.exports = {
         
         fallback : "style-loader",
       })
-    // loader: ['css-loader','style-loader'],
     },
-    // {
-    //   test: /\.(jpe?g|png|gif|svg)$/i,
-    //   loaders : [
-    //   {
-    //       loader : "file-loader",
-    //       options : {
-    //       name : 'img/[name].[ext]'
-    //     }
-    //   },
-    //    'img-loader'
-    //   ] 
-    // }
   ],
 },
 plugins: [
-new HtmlWebpackPlugin({
-src: 'x.html',
-template:'index.html'
-}),
   new ExtractTextPlugin('index.css'),
   new webpack.LoaderOptionsPlugin({
     minimize:true
@@ -74,12 +44,5 @@ template:'index.html'
       algorithm: 'gzip',
       minRatio: 0.8
     }),
-    //  new CriticalWebpackPlugin({
-    //   ase: path.join(path.resolve(__dirname), 'service/'),
-    //   src: 'index.html',
-    //   dest: 'index1.html',
-    //   css: ['css/index.css'],
-    // })
-
 ]
 }
