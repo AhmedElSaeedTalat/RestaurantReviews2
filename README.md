@@ -2,27 +2,74 @@
 ---
 #### _Three Stage Course Material Project - Restaurant Reviews_
 
-## Project Overview: Stage 1
+## Project Overview:  
 
-For the **Restaurant Reviews** projects, you will incrementally convert a static webpage to a mobile-ready web application. In **Stage One**, you will take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. You will also add a service worker to begin the process of creating a seamless offline experience for your users.
+ **Restaurant Reviews** project, provides data about restaurants and customers' reviews about the restaruants
+ the data is requested from other server and stored in indexedDB by library **idb** for an easy loading 
 
-### Specification
+### Installation: 
 
-You have been provided the code for a restaurant reviews website. The code has a lot of issues. It’s barely usable on a desktop browser, much less a mobile device. It also doesn’t include any standard accessibility features, and it doesn’t work offline at all. Your job is to update the code to resolve these issues while still maintaining the included functionality. 
+1. Make sure to install the library used to store data using:
+   `npm install idb --save-dev`
 
-### What do I do from here?
+2. Launch the site following these **steps**:
 
-1. In this folder, start up a simple HTTP server to serve up the site files on your local computer. Python has some simple tools to do this, and you don't even need to know Python. For most people, it's already installed on your computer. 
+    - In a terminal, check the version of Python you have: `python -V`.
+    
+    - If you have Python 2.x, spin up the server with `python -m SimpleHTTPServer 8000` (or some other port, if port 8000 is already in use.) 
+    
+    - For Python 3.x, you can use `python3 -m http.server 8000`. 
+    
+    - If you don't have Python installed, navigate to Python's [website](https://www.python.org/) to download and install the software.
 
-In a terminal, check the version of Python you have: `python -V`. If you have Python 2.x, spin up the server with `python -m SimpleHTTPServer 8000` (or some other port, if port 8000 is already in use.) For Python 3.x, you can use `python3 -m http.server 8000`. If you don't have Python installed, navigate to Python's [website](https://www.python.org/) to download and install the software.
+3. With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what   the current experience looks like.
 
-2. With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what the current experience looks like.
-3. Explore the provided code, and make start making a plan to implement the required features in three areas: responsive design, accessibility and offline use.
-4. Write code to implement the updates to get this site on its way to being a mobile-ready website.
+4. the server consumes data from [website](https://github.com/udacity/mws-restaurant-stage-2) download the 
+   repo and install the relative dependecies by following the instructions mentioned. 
 
-### Note about ES6
+### Contributing to Restaurant Reviews:
 
-Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write. 
+Contributing to Factory Bot
+We love pull requests from everyone. By participating in this project, you agree to abide by the thoughtbot code of conduct.
 
+Here are some ways you can contribute:
 
+ - by using alpha, beta, and prerelease versions
+ - by reporting bugs
+ - by suggesting new features
+ - by writing or editing documentation
+ - by writing specifications
+ - by writing code ( no patch is too small : fix typos, add comments, clean up inconsistent whitespace )
+ - by refactoring code
+ - by closing issues
+ - by reviewing patches
 
+#### Submitting a Pull Request
+
+ - Fork the official repository.
+ - Create a topic branch.
+ - Implement your feature or bug fix.
+ - Add, commit, and push your changes.
+ - Submit a pull request.
+
+### License:
+
+**Copyright** (c) [2018] [Restaurant Reviews]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
