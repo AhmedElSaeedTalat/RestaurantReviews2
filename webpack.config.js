@@ -18,7 +18,7 @@ module.exports = {
 },
 	output:{
 		path:path.resolve(__dirname+"/service"),
-		filename:"hgfh.js"
+		filename:"rest.js"
 },
  module: {
   rules: [
