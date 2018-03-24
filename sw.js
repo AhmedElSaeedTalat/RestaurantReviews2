@@ -19,7 +19,7 @@ let allCaches = [
 				'/',
 				'restaurant.html',
 				'service/main.js',
-				'service/main.css',
+				'service/index.css',
 				'service/restaurant.css',
 				'service/rest.js',
 				'manifest.json',

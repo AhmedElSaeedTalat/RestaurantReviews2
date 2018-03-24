@@ -10,13 +10,15 @@ const imageminMozjpeg =require('imagemin-mozjpeg');
 module.exports = {
 	entry:{
 		app:[   
-            "./js/main.js",
             "./js/dbhelper.js",
+            "./js/restaurant_info.js",
+            "./css/styles.css",
+            "./css/restaurant.css",
         ]
 },
 	output:{
 		path:path.resolve(__dirname+"/service"),
-		filename:"main.js"
+		filename:"hgfh.js"
 },
  module: {
   rules: [
@@ -34,7 +36,7 @@ module.exports = {
   ],
 },
 plugins: [
-  new ExtractTextPlugin('index.css'),
+  new ExtractTextPlugin('restaurant.css'),
   new webpack.LoaderOptionsPlugin({
     minimize:true
   }),

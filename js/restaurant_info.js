@@ -81,6 +81,10 @@ fetchRestaurantFromURL1 = (callback) => {
    */
 
 fillRestaurantHTML = (restaurant = self.restaurant) => {
+  let alt = alter();
+  let valAlt = alt.filter(response => {
+    return response.id == restaurant.id ; 
+  });
   const name = document.getElementById('restaurant-name');
   name.innerHTML = restaurant.name;
 
@@ -90,7 +94,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 const img = document.getElementById('restaurant-img');
   img.srcset = `/images/${restaurant.photograph}-small.jpg 650w, /images/${restaurant.photograph}-large.jpg 800w`;
   img.src = `/images/${restaurant.photograph}-small.jpg`;
-  img.alt = restaurant.alt;
+  img.alt = valAlt[0].alt;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -227,3 +231,23 @@ getParameterByName = (name, url) => {
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
+ /**
+   * @description data for alt text 
+   * images
+   */
+
+  alter = () => {
+    let vals = [
+     {id:1,alt:"Name Restaurant: Mission Chinese Food Restaurant"},
+     {id:2,alt:"Name Restaurant: Emily Restaurant"},
+     {id:3,alt:"Name Restaurant: Kang Ho Dong Baekjeong Restaurant"},
+     {id:4,alt:"Name Restaurant: Katz's Delicatessen Restaurant"},
+     {id:5,alt:"Name Restaurant: Roberta's Pizza Restaurant"},
+     {id:6,alt:"Name Restaurant: Hometown BBQ Restaurant"},
+     {id:7,alt:"Name Restaurant: Superiority Burger Restaurant",},
+     {id:8,alt:"Name Restaurant: The Dutch Restaurant"},
+     {id:9,alt:"Name Restaurant: Mu Ramen restaurant"},
+     {id:10,alt:"Name Restaurant: Casa Enrique Restaurant"},
+   ];
+  return vals;
+}

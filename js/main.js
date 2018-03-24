@@ -128,6 +128,13 @@ window.onload =  updateRestaurants = () => {
 
   fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
+  let alt = alterText();
+  restaurants.forEach(res => {
+    let val = alt.filter(response => {
+    return response.id == res.id;
+  });
+  res.alter = val[0].alt;
+  });
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
@@ -163,7 +170,7 @@ let counter = 0;
 
   image.className = 'restaurant-img';
   image.src = `/images/${restaurant.photograph}-small.jpg `;
-  image.alt = restaurant.alt;
+  image.alt = restaurant.alter;
 
   picture.append(source);
   picture.append(source1);
@@ -270,4 +277,25 @@ let counter = 0;
   markers.forEach(m => m.setMap(null));
   markers = [];
   self.restaurants = restaurants;
+}
+
+ /**
+   * @description data for alt text 
+   * images
+   */ 
+
+  alterText = () => {
+    let vals = [
+     {id:1,alt:"Name Restaurant: Mission Chinese Food Restaurant"},
+     {id:2,alt:"Name Restaurant: Emily Restaurant"},
+     {id:3,alt:"Name Restaurant: Kang Ho Dong Baekjeong Restaurant"},
+     {id:4,alt:"Name Restaurant: Katz's Delicatessen Restaurant"},
+     {id:5,alt:"Name Restaurant: Roberta's Pizza Restaurant"},
+     {id:6,alt:"Name Restaurant: Hometown BBQ Restaurant"},
+     {id:7,alt:"Name Restaurant: Superiority Burger Restaurant",},
+     {id:8,alt:"Name Restaurant: The Dutch Restaurant"},
+     {id:9,alt:"Name Restaurant: Mu Ramen restaurant"},
+     {id:10,alt:"Name Restaurant: Casa Enrique Restaurant"},
+   ];
+  return vals;
 }
