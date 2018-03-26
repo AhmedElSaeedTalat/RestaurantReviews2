@@ -51,9 +51,12 @@ static fetchResults() {
               let tx = db.transaction('restaurantObject','readwrite');
               let store = tx.objectStore('restaurantObject');
               res.map(obj => {
-                return store.put(obj);
+                if(obj.photograph != null) {
+                    return store.put(obj);
+                }
               })     
             });
+            let restaurants = res;
           }).catch(errors => {
               const error = (`Request failed. Returned status of ${errors.status}`);
               callback(error, null);
@@ -66,15 +69,16 @@ static fetchResults() {
    */
 
   static fetchRestaurants(callback) {
-   DBHelper.fetchResults();
     this.db.then(db => {
         let transaction = db.transaction('restaurantObject');
         let storeObj = transaction.objectStore('restaurantObject');
         return storeObj.getAll();
     }).then(response => {
-      if(response) {
+      if(response.length > 0) {
         let restaurants = response;
         callback(null, restaurants);
+    }  else {
+         DBHelper.fetchResults();
     };       
   });
 }

@@ -11,14 +11,12 @@ module.exports = {
 	entry:{
 		app:[   
             "./js/dbhelper.js",
-            "./js/restaurant_info.js",
-            "./css/styles.css",
-            "./css/restaurant.css",
+            "./js/main.js",
         ]
 },
 	output:{
 		path:path.resolve(__dirname+"/service"),
-		filename:"rest.js"
+		filename:"main.js"
 },
  module: {
   rules: [
